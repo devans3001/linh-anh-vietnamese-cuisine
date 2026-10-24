@@ -1,5 +1,6 @@
 import { business, facts, lineup, stalls } from "@/lib/data";
 import { BANHMI, SPRINGROLLS } from "@/lib/photos";
+import { REAL_MARROW, REAL_PLATTER, REAL_PULL, REAL_RARE, REAL_TOP } from "@/lib/photos-real";
 
 /* LINH ANH sections — poster-wall grammar throughout: paper posters,
    hairline index rows, ticket stubs, one chili chapter. No cards, no
@@ -44,6 +45,35 @@ export function Marquee() {
   );
 }
 
+
+function Band({ src, alt, caption }: { src: string; alt: string; caption: string }) {
+  return (
+    <figure className="relative h-[46vh] overflow-hidden sm:h-[58vh]">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={src} alt={alt} className="h-full w-full object-cover" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-broth/60 to-transparent" />
+      <figcaption className="absolute bottom-4 left-5 font-mono text-[10px] font-bold tracking-[0.25em] text-paper uppercase [text-shadow:_0_1px_10px_rgb(0_0_0/70%)] sm:left-8">
+        {caption}
+      </figcaption>
+    </figure>
+  );
+}
+
+/* Photo bands between the stalls — the restaurant's REAL plates first
+   (customer photos from their Google/Yelp listings), generated imagery
+   second. Evans's standing rule: their pics lead. */
+const bandPre: Record<number, React.ReactNode> = {
+  0: <Band src={REAL_TOP} alt="A real bowl of Linh Anh pho photographed from above at a customer's table, heaped with basil" caption="The real bowl, from a real table — customer photo" />,
+  1: <Band src={REAL_RARE} alt="A real Linh Anh pho bowl with rare beef still pink, bean sprouts and lime on the side" caption="Rare beef, still pink — exactly how the reviews describe it" />,
+  2: <Band src={SPRINGROLLS} alt="Fresh spring rolls with shrimp and herbs, peanut-hoisin sauce for dipping" caption="Stall 02, still warm — gỏi cuốn, rolled to order" />,
+  3: <Band src={REAL_PLATTER} alt="A real Linh Anh banh cuon platter in a woven basket with fried shallots and grilled pork" caption="Bánh cuốn on the woven platter — customer photo" />,
+};
+const bandPost: Record<number, React.ReactNode> = {
+  0: <Band src={REAL_MARROW} alt="The real bone marrow pho spread at Linh Anh: stone bowl of broth, marrow bones and sliced beef on side plates" caption="The real #1 — marrow bones on the side, beef sliced to order" />,
+  1: <Band src={REAL_PULL} alt="Chopsticks lifting silky pho noodles and tripe from a real Linh Anh bowl" caption="The noodle pull — silky, per the reviews" />,
+  3: <Band src={BANHMI} alt="Grilled pork banh mi with pickled vegetables in a crackly baguette" caption="Stall 04 — the baguette crackles or it doesn't leave the stall" />,
+};
+
 export function StallIndex() {
   return (
     <section id="stalls" className="scroll-mt-16 bg-paper text-broth">
@@ -60,24 +90,7 @@ export function StallIndex() {
 
       {stalls.map((stall, i) => (
         <div key={stall.no}>
-          {i === 2 && (
-            <figure className="relative h-[46vh] overflow-hidden sm:h-[58vh]">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={SPRINGROLLS} alt="Fresh spring rolls with shrimp and herbs, peanut-hoisin sauce for dipping" className="h-full w-full object-cover" />
-              <figcaption className="absolute bottom-4 left-5 font-mono text-[10px] font-bold tracking-[0.25em] text-paper uppercase [text-shadow:_0_1px_10px_rgb(0_0_0/70%)] sm:left-8">
-                Stall 02, still warm — gỏi cuốn, rolled to order
-              </figcaption>
-            </figure>
-          )}
-          {i === 3 && (
-            <figure className="relative h-[46vh] overflow-hidden sm:h-[58vh]">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={BANHMI} alt="Grilled pork banh mi with pickled vegetables in a crackly baguette" className="h-full w-full object-cover" />
-              <figcaption className="absolute bottom-4 left-5 font-mono text-[10px] font-bold tracking-[0.25em] text-paper uppercase [text-shadow:_0_1px_10px_rgb(0_0_0/70%)] sm:left-8">
-                Stall 04 — the baguette crackles or it doesn't leave the stall
-              </figcaption>
-            </figure>
-          )}
+          {bandPre[i]}
           <div className="mx-auto max-w-[110rem] px-5 py-14 sm:px-8 sm:py-20">
             <div className="flex items-start gap-5 sm:gap-8">
               <span className="text-outline-broth font-display text-7xl leading-none font-black sm:text-9xl">{stall.no}</span>
@@ -105,6 +118,7 @@ export function StallIndex() {
               ))}
             </ul>
           </div>
+          {bandPost[i]}
         </div>
       ))}
       <p className="mx-auto max-w-[110rem] px-5 pb-16 font-mono text-[10px] font-bold tracking-[0.2em] text-broth/45 uppercase sm:px-8">
@@ -202,8 +216,9 @@ export function Footer() {
           <span>Open 11–11, every day</span>
         </div>
         <p className="mt-8 max-w-2xl text-xs leading-relaxed font-medium text-paper/40">
-          Concept website built for Linh Anh Vietnamese Cuisine. Food imagery generated for this
-          concept; dishes and details from the restaurant's own public listings and reviews.
+          Concept website built for Linh Anh Vietnamese Cuisine. Photography: the restaurant's
+          own customer photos (Google/Yelp listings) alongside generated concept imagery;
+          dishes, prices and details from the restaurant's own public listings and reviews.
         </p>
       </div>
     </footer>
