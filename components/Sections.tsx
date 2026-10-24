@@ -1,6 +1,6 @@
 import { business, facts, lineup, stalls } from "@/lib/data";
 import { BANHMI, SPRINGROLLS } from "@/lib/photos";
-import { REAL_MARROW, REAL_PLATTER, REAL_PULL, REAL_RARE, REAL_TOP } from "@/lib/photos-real";
+import { IG_PHODB, IG_RIBS, REAL_MARROW, REAL_PLATTER, REAL_PULL, REAL_RARE, REAL_TOP } from "@/lib/photos-real";
 
 /* LINH ANH sections — poster-wall grammar throughout: paper posters,
    hairline index rows, ticket stubs, one chili chapter. No cards, no
@@ -71,7 +71,8 @@ const bandPre: Record<number, React.ReactNode> = {
 const bandPost: Record<number, React.ReactNode> = {
   0: <Band src={REAL_MARROW} alt="The real bone marrow pho spread at Linh Anh: stone bowl of broth, marrow bones and sliced beef on side plates" caption="The real #1 — marrow bones on the side, beef sliced to order" />,
   1: <Band src={REAL_PULL} alt="Chopsticks lifting silky pho noodles and tripe from a real Linh Anh bowl" caption="The noodle pull — silky, per the reviews" />,
-  3: <Band src={BANHMI} alt="Grilled pork banh mi with pickled vegetables in a crackly baguette" caption="Stall 04 — the baguette crackles or it doesn't leave the stall" />,
+  2: <Band src={IG_RIBS} alt="Linh Anh's grilled beef short ribs on rice with a sunny-side-up egg, from their Instagram" caption="From their Instagram — grilled short ribs, sunny egg, pickles bright" />,
+  3: <Band src={IG_PHODB} alt="A large bowl of pho dac biet at the Scarborough Linh Anh, copper cup beside it, from their Instagram" caption="Phở đặc biệt in the Scarborough room — copper cup on the side · their Instagram" />,
 };
 
 export function StallIndex() {

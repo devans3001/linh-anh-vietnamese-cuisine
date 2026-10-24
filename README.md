@@ -23,7 +23,8 @@ never guessed.
 **Imagery:** hero bowl, pour sequence, banh mi and spring rolls are
 purpose-generated photoreal imagery made for this concept (Evans's
 realism standard). The Stall Index photo bands lead with Linh Anh's
-REAL plates — customer photos from their public Google/Yelp listings.
+REAL plates — customer photos from their public Google/Yelp listings
+plus shots from their own Instagram (@linhanhvietnamesecuisine).
 No stock photos of other restaurants' food.
 
 Run: `npm run build && npm start` (or import the repo in Vercel after
