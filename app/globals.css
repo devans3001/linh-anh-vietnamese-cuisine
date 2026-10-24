@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@theme {
+  /* LINH ANH — "THE NIGHT MARKET". Broth-brown black ground, bone-cream
+     paper, broth gold, herb green as a chapter marker, and ONE sharp
+     accent: chili red. Be Vietnam Pro carries the brand voice (proper
+     diacritics for Phở / Bún / Đặc Biệt); Space Mono is the ticket
+     stub. Sharp corners; hairlines; no cards. */
+  --color-broth: #1d120b;
+  --color-broth-2: #2a1a0f;
+  --color-paper: #f7f0e1;
+  --color-paper-2: #efe3cb;
+  --color-gold: #d9a441;
+  --color-herb: #2f5d33;
+  --color-chili: #c1272d;
+  --font-display: "Be Vietnam Pro", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Be Vietnam Pro", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Space Mono", ui-monospace, monospace;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--color-broth);
+  color: var(--color-paper);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+::selection { background: var(--color-chili); color: var(--color-paper); }
+
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.animate-marquee { animation: marquee 26s linear infinite; }
+
+@keyframes scrollcue {
+  0% { transform: translateY(0); opacity: 1; }
+  70% { transform: translateY(12px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 0; }
+}
+.animate-scrollcue { animation: scrollcue 1.8s ease-in-out infinite; }
+
+.text-outline-paper {
+  -webkit-text-stroke: 2px rgba(247, 240, 225, 0.75);
+  color: rgba(29, 18, 11, 0.42);
+}
+.text-outline-broth {
+  -webkit-text-stroke: 2px rgba(29, 18, 11, 0.5);
+  color: transparent;
+}
